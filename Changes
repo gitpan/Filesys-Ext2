@@ -1,0 +1,22 @@
+Revision history for Perl extension FileSys::Ext2.
+
+0.01  Thu Oct 12 19:13:53 2000
+	- original version; created by h2xs 1.20 with options
+		-n FileSys::Ext2
+
+0.02  Thu Oct 12 19:17:46 EDT 2000
+	- first functional version;
+	  no Exports
+
+0.03  Thu Oct 12 19:52:03 EDT 2000
+	- first public release;
+	  added l?stat and exports
+
+0.04  Fri Oct 13 09:38:22 EDT 2000
+	- FileSys::Ext2's second first public release
+	  added calcSymMask,
+	  adjusted chattr,
+	  changed bit mappings to match kernel,
+	  added local PATH; you may need to set this in the module if your
+	  e2fsprogs are not in the usual place
+	  (namely chattr and lsattr in /usr/bin)
