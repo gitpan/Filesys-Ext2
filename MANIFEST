@@ -1,8 +1,9 @@
-Changes
+CHANGES
 Ext2.pm
 INSTALL
 MANIFEST
 Makefile.PL
 README
-ext2_fs.h
-test.pl
+other/ext2_fs.h
+t/1.t
+t/2.t

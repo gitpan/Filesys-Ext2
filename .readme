@@ -1,1 +1,0 @@
-perl -MPod::Text -e 'pod2text(Ext2.pm)' > README

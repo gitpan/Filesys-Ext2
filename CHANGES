@@ -1,0 +1,46 @@
+Revision history for Perl extension FileSys::Ext2.
+
+0.09  
+	- latest 
+	- Added :all EXPORT_TAG
+	- Added functionality test
+	- Fixed/added ability to set PATH
+	- Streamlined code
+	- Better error handling
+0.08  Tue Oct 24 15:04:39 GMT 2000
+	- release #666
+	- Missed a FileSys->Filesys in test.pl
+0.07  Mon Oct 23 17:57:18 GMT 2000
+	- first second release
+	- Added timestamp for 0.06
+	- Really and truly fixed calcSymMask (sorry about that)
+	- Settled on .tgz
+0.06  Mon Oct 23 17:48:00 GMT 2000
+	- fourth first release
+	- Fixed FileSys/Filesys issues in documentation, and build directory
+	- Fixed calcSymMask, scalar mode returned a list
+	   (and hence all one would ever receive is the number 8)
+	- Removed a debug statement
+0.05  Mon Oct 16 15:53:42 GMT 2000
+	- third first release
+	- cleaned up POD (documentation),
+	- updated example to use a sensible bitmask
+	   (wasn't changed when switched to kernel mappings),
+	- Changed to Filesys::Ext2; it's FileHandle and FileCache but Filesys?!
+0.04  Fri Oct 13 09:38:22 EDT 2000
+	- FileSys::Ext2's second first public release
+	- added calcSymMask,
+	- adjusted chattr,
+	- changed bit mappings to match kernel,
+	- added local PATH; you may need to set this in the module if your
+	    e2fsprogs are not in the usual place
+	    (namely chattr and lsattr in /usr/bin)
+0.03  Thu Oct 12 19:52:03 EDT 2000
+	- first public release;
+	- added l?stat and exports
+0.02  Thu Oct 12 19:17:46 EDT 2000
+	- first functional version;
+	- no Exports
+0.01  Thu Oct 12 19:13:53 2000
+	- original version; created by h2xs 1.20 with options
+		-n FileSys::Ext2
