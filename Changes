@@ -26,9 +26,14 @@ Revision history for Perl extension FileSys::Ext2.
 	  updated example to use a sensible bitmask
 	    (wasn't changed when switched to kernel mappings),
 	  Changed to Filesys::Ext2; it's FileHandle and FileCache but Filesys?!
-0.06
+0.06  Mon Oct 23 17:48:00 GMT 2000
 	- fourth first release
 	  Fixed FileSys/Filesys issues in documentation, and build directory
 	  Fixed calcSymMask, scalar mode returned a list
 	    (and hence all one would ever receive is the number 8)
 	  Removed a debug statement
+0.07  Mon Oct 23 17:57:18 GMT 2000
+	- first second release
+	  Added timestamp for 0.06
+	  Really and truly fixed calcSymMask (sorry about that)
+	  Settled on .tgz

@@ -3,7 +3,7 @@ use Exporter;
 @ISA = qw(Exporter);
 @EXPORT_OK = qw(chattr lsattr stat lstat calcSymMask);
 use strict;
-my $VERSION = '0.06';
+my $VERSION = '0.07';
 
 #You may need to change this if you installed e2fsprogs in a weird location;
 local $ENV{PATH} = '/usr/bin/';
@@ -133,12 +133,11 @@ sub _calcSymMask($) {
 }
 
 sub calcSymMask($) {
+    my @F = _calcSymMask($_[0]);
     if( wantarray ){
         return @F; }
-    my @F;
     
     local $_;
-    @F = _calcSymMask($_[0]);
     $_ = join('', @F);
     s/-./-/g;
     tr/+//d;
