@@ -45,13 +45,13 @@ sub lsattr($) {
 sub stat($) {
     my $stat = CORE::stat($_[0]);
     my $lsattr = scalar lsattr($_[0]);
-    return wantarray ? (stat _, $lsattr) : $stat && ($lsattr ? 1 : 0);
+    return wantarray ? (stat(_), $lsattr) : $stat && ($lsattr ? 1 : 0);
 }
 
 sub lstat($) {
     my $stat = CORE::lstat($_[0]);
     my $lsattr = scalar lsattr($_[0]);
-    return wantarray ? (lstat _, $lsattr) : $stat && ($lsattr ? 1 : 0);
+    return wantarray ? (lstat(_), $lsattr) : $stat && ($lsattr ? 1 : 0);
 }
 
 sub _calcBitMask($) {
@@ -120,7 +120,7 @@ Otherwise the module will use the default path /usr/bin/
 Change the mode of I<@files> to match I<$mask>.
 I<$mask> may be a symbolic mode or a bitmask.
 
-Check $? upon failure.
+Returns 0 upon failure, check $?.
 
 =item lsattr($file)
 
@@ -128,15 +128,19 @@ In list context it returns a list containing symbols
 representing the symbolic mode of I<$file>.
 In scalar context it returns a bitmask.
 
-Check $? upon failure.
+Returns 0 upon failure, check $?.
 
 =item lstat($file)
 
 Same as C<CORE::lstat>, but appends the numerical attribute bitmask.
 
+Returns 0 upon failure, check $?.
+
 =item stat($file)
 
 Same as C<CORE::stat>, but appends the numerical attribute bitmask.
+
+Returns 0 upon failure, check $?.
 
 =item calcSymMask($mask)
 

@@ -1,7 +1,14 @@
 Revision history for Perl extension FileSys::Ext2.
 
-0.09  
-	- latest 
+0.10  Fri Feb 14 17:07:54 UTC 2003
+	- Evan is a Dorkin, I need more material
+	- Fixed a bug/oversight in l?stat
+	- Fixed a bug/oversight in t/2.t
+	- Forgot to timestamp 0.09
+	- Added LICENSE.pod
+	- Ammended documentation
+0.09  Fri Feb 14 01:51:20 UTC 2003
+	- latest thing
 	- Added :all EXPORT_TAG
 	- Added functionality test
 	- Fixed/added ability to set PATH
