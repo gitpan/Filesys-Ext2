@@ -3,7 +3,7 @@ use Exporter;
 @ISA = qw(Exporter);
 @EXPORT_OK = qw(chattr lsattr stat lstat calcSymMask);
 use strict;
-my $VERSION = '0.07';
+my $VERSION = '0.08';
 
 #You may need to change this if you installed e2fsprogs in a weird location;
 local $ENV{PATH} = '/usr/bin/';

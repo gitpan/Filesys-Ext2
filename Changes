@@ -37,3 +37,6 @@ Revision history for Perl extension FileSys::Ext2.
 	  Added timestamp for 0.06
 	  Really and truly fixed calcSymMask (sorry about that)
 	  Settled on .tgz
+0.08  Tue Oct 24 15:04:39 GMT 2000
+	- release #666
+	  Missed a FileSys->Filesys in test.pl
