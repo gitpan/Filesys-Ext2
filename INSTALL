@@ -1,0 +1,9 @@
+1.) perl Makefile.PL
+
+    Extra special secret step:
+    Filesys::Ext explicitly sets its local path to /usr/bin/
+    If your lsattr and chattr are elsewhere you should change line 9,
+    or set Filesys::Ext::Path{} appropriately.
+
+2.) make
+3.) make install

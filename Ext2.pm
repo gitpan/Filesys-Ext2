@@ -3,7 +3,7 @@ use Exporter;
 @ISA = qw(Exporter);
 @EXPORT_OK = qw(chattr lsattr stat lstat calcSymMask);
 use strict;
-my $VERSION = '0.05';
+my $VERSION = '0.06';
 
 #You may need to change this if you installed e2fsprogs in a weird location;
 local $ENV{PATH} = '/usr/bin/';
@@ -12,11 +12,11 @@ local $ENV{PATH} = '/usr/bin/';
 
 =head1 NAME
 
-FileSys::Ext2 - Interface to e2fs filesystem attributes
+Filesys::Ext2 - Interface to e2fs filesystem attributes
 
 =head1 SYNOPSIS
 
-        use FileSys::Ext2 qw(chattr lsattr);
+        use Filesys::Ext2 qw(chattr lsattr);
         $mode = lsattr("/etc/passwd");
         chattr("+aud", "/etc/passwd");
 	#or equivalently
@@ -38,7 +38,7 @@ In list context it returns a list containing symbols
 representing the symbolic mode of I<$file>.
 In scalar context it returns a bitmask.
 
-=item B<lstat($file)>
+=item C<lstat($file)>
 
 Same as C<CORE::lstat>, but appends the numerical attribute bitmask.
 
@@ -121,7 +121,6 @@ sub _calcBitMask($) {
 sub _calcSymMask($) {
     my $bitmask = shift();
     my @mask;
-    printf "Bitmask %s %o\n", $bitmask, $bitmask;
     push @mask, $bitmask & 0x0001 ? '+s' : '-s';
     push @mask, $bitmask & 0x0002 ? '+u' : '-u';
     push @mask, $bitmask & 0x0004 ? '+c' : '-c';
@@ -134,14 +133,16 @@ sub _calcSymMask($) {
 }
 
 sub calcSymMask($) {
-    my @F;
-    @F = _calcSymMask($_[0]);
     if( wantarray ){
-        local $_;
-	$_ = join('', @F);
-	s/-./-/g;
-	tr/+//d; }
-    return @F;
+        return @F; }
+    my @F;
+    
+    local $_;
+    @F = _calcSymMask($_[0]);
+    $_ = join('', @F);
+    s/-./-/g;
+    tr/+//d;
+    return $_;
 }
 
 1;

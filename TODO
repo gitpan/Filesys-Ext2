@@ -1,0 +1,4 @@
+redirect erros to /dev/null ?
+
+lsattr: Inappropriate ioctl for device While reading flags on /tmp/kfm_0_922310.80.80.10_0.0
+srw-------    1 root     root            0 Aug 31 11:08 /tmp/kfm_0_922310.80.80.10_0.0

@@ -1,8 +1,8 @@
 NAME
-    FileSys::Ext2 - Interface to e2fs filesystem attributes
+    Filesys::Ext2 - Interface to e2fs filesystem attributes
 
 SYNOPSIS
-            use FileSys::Ext2 qw(chattr lsattr);
+            use Filesys::Ext2 qw(chattr lsattr);
             $mode = lsattr("/etc/passwd");
             chattr("+aud", "/etc/passwd");
             #or equivalently
@@ -18,7 +18,7 @@ DESCRIPTION
             representing the symbolic mode of *$file*. In scalar
             context it returns a bitmask.
 
-    lstat($file)
+    `lstat($file)'
             Same as `CORE::lstat', but appends the numerical
             attribute bitmask.
 
