@@ -1,79 +1,8 @@
 NAME
-    Filesys::Ext2 - Interface to e2fs filesystem attributes
+    Filesys::Ext2 - Interface to ext2 and ext3 filesystem attributes
 
-SYNOPSIS
-      use Filesys::Ext2 qw(:all);
-      $mode = lsattr("/etc/passwd");
-      chattr("+aud", "/etc/passwd");
-      #or equivalently
-      #chattr($mode|0x0062, "/etc/passwd");
+REQUIRES
+    e2fsprogs <http://e2fsprogs.sourceforge.net>
 
-DESCRIPTION
-    You may specify the path of the e2fsprogs upon use
-
-      use Filesys::Ext2 {PATH=>'/path/to/binaries'};
-
-    Otherwise the module will use the default path /usr/bin/
-
-    chattr($mask, @files)
-            Change the mode of *@files* to match *$mask*. *$mask* may be a
-            symbolic mode or a bitmask.
-
-            Check $? upon failure.
-
-    lsattr($file)
-            In list context it returns a list containing symbols
-            representing the symbolic mode of *$file*. In scalar context it
-            returns a bitmask.
-
-            Check $? upon failure.
-
-    lstat($file)
-            Same as `CORE::lstat', but appends the numerical attribute
-            bitmask.
-
-    stat($file)
-            Same as `CORE::stat', but appends the numerical attribute
-            bitmask.
-
-    calcSymMask($mask)
-            Accepts a bitmask and returns the symbolic mode. In list context
-            it returns a symbol list like lsattr, in scalar context it
-            returns a string that matches the -------- region of lsattr(1)
-            (akin to that of ls -l e.g. drwxr-x---)
-
-SEE ALSO
-    chattr(1), lsattr(1)
-
-NOTES
-    Of course, this would be more efficient if it were an XSUB.
-
-    The bit mappings for attributes, from ext2_fs.h
-
-    0x0001 == s
-        Secure deletion
-
-    0x0002 == u
-        Undelete
-
-    0x0004 == c
-        Compress file
-
-    0x0008 == S
-        Synchronous updates
-
-    0x0010 == i
-        Immutable file
-
-    0x0020 == a
-        Writes to file may only append
-
-    0x0040 == d
-        Do not dump file
-
-    0x0080 == A
-        Do not update atime
-
-AUTHOR
-    Jerrad Pierce <jpierce@cpan.org>
-
+CAVEATS
+    lsattr is no longer context sensitive.

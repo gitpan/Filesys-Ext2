@@ -1,5 +1,5 @@
 Port chattr/lsattr to XS; more efficient and avoid PATH mess
 
-Configuration of PATH?
+Slice @files?
 
-Trap or redirect errors to /dev/null?
+Global configuration of PATH?

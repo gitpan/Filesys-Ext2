@@ -5,6 +5,9 @@ LICENSE.pod
 MANIFEST
 Makefile.PL
 README
+TODO
+ls2.pl
+other/COPYING
 other/ext2_fs.h
 t/1.t
 t/2.t
