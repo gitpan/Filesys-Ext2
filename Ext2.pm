@@ -2,7 +2,7 @@ package Filesys::Ext2;
 require 5;
 use strict;
 use vars q($VERSION);
-$VERSION = 0.09;
+$VERSION = 0.11;
 local($_);
 
 #XXX You may want to change this default if you installed
@@ -43,15 +43,15 @@ sub lsattr($) {
 }
 
 sub stat($) {
-    my $stat = CORE::stat($_[0]);
     my $lsattr = scalar lsattr($_[0]);
-    return wantarray ? (stat(_), $lsattr) : $stat && ($lsattr ? 1 : 0);
+    my $stat = CORE::stat($_[0]);
+    return wantarray ? (CORE::stat(_), $lsattr) : $stat && ($lsattr ? 1 : 0);
 }
 
 sub lstat($) {
-    my $stat = CORE::lstat($_[0]);
     my $lsattr = scalar lsattr($_[0]);
-    return wantarray ? (lstat(_), $lsattr) : $stat && ($lsattr ? 1 : 0);
+    my $stat = CORE::lstat($_[0]);
+    return wantarray ? (CORE::lstat(_), $lsattr) : $stat && ($lsattr ? 1 : 0);
 }
 
 sub _calcBitMask($) {

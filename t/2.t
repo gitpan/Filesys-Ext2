@@ -53,7 +53,7 @@ my @attr;
   print "ok 4 # chattr -d +A\n";
 }
 {
-  my @F = stat($0);
+  my @F = lstat($0);
   ($attr[2] = $F[$#F]) || print "not ";
   printf "ok 5 # %s\n", scalar calcSymMask($attr[2]);
   print "not " unless scalar @F == 14;
