@@ -1,9 +1,9 @@
-package FileSys::Ext2;
+package Filesys::Ext2;
 use Exporter;
 @ISA = qw(Exporter);
 @EXPORT_OK = qw(chattr lsattr stat lstat calcSymMask);
 use strict;
-my $VERSION = '0.04';
+my $VERSION = '0.05';
 
 #You may need to change this if you installed e2fsprogs in a weird location;
 local $ENV{PATH} = '/usr/bin/';
@@ -18,7 +18,9 @@ FileSys::Ext2 - Interface to e2fs filesystem attributes
 
         use FileSys::Ext2 qw(chattr lsattr);
         $mode = lsattr("/etc/passwd");
-        chattr($mode+0003, "/etc/passwd");
+        chattr("+aud", "/etc/passwd");
+	#or equivalently
+        #chattr($mode|0x0062, "/etc/passwd");
 
 =head1 DESCRIPTION
 
@@ -27,36 +29,36 @@ FileSys::Ext2 - Interface to e2fs filesystem attributes
 
 =item C<chattr($mask, @files)>
 
-Change the mode of C<@files> to match C<$mask>.
-C<$mask> may be a symbolic mode or a bitmask.
+Change the mode of I<@files> to match I<$mask>.
+I<$mask> may be a symbolic mode or a bitmask.
 
 =item C<lsattr($file)>
 
 In list context it returns a list containing symbols
-representing the symbolic mode of C<$file>.
+representing the symbolic mode of I<$file>.
 In scalar context it returns a bitmask.
 
-=item C<lstat($file)>
+=item B<lstat($file)>
 
-Same as CORE::lstat, but appends the numerical attribute bitmask.
+Same as C<CORE::lstat>, but appends the numerical attribute bitmask.
 
 =item C<stat($file)>
 
-Same as CORE::stat, but appends the numerical attribute bitmask.
+Same as C<CORE::stat>, but appends the numerical attribute bitmask.
 
 =item C<calcSymMask>
 
 Accepts a bitmask and returns the symbolic mode.
 In list context it returns a symbol list like lsattr,
 in scalar mode it returns a string that matches the
--------- region of lsattr
-(akin to that of ls -l e.g. drwxr-x---)
+-------- region of B<lsattr(1)>
+(akin to that of B<ls -l> e.g. drwxr-x---)
 
 =back
 
 =head1 SEE ALSO
 
-chattr(1), lsattr(1)
+B<chattr(1)>, B<lsattr(1)>
 
 =head1 NOTES
 
@@ -82,7 +84,7 @@ Jerrad Pierce <belg4mit@mit.edu>, <webmaster@pthbb.org>
 sub chattr($$;@){
     my($mask, @files) = @_;
     my @mask = $mask =~ /^\d+/ ?
-	_calcSymMask($mask) : split(/(?:\s+)|(?=[+-])/, $mask);
+	_calcSymMask($mask) : split(/\s+|(?=[+-])/, $mask);
     return system("chattr", @mask, @files);
 }
 

@@ -2,5 +2,6 @@ Changes
 Ext2.pm
 MANIFEST
 Makefile.PL
+README
 ext2_fs.h
 test.pl

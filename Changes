@@ -18,5 +18,11 @@ Revision history for Perl extension FileSys::Ext2.
 	  adjusted chattr,
 	  changed bit mappings to match kernel,
 	  added local PATH; you may need to set this in the module if your
-	  e2fsprogs are not in the usual place
-	  (namely chattr and lsattr in /usr/bin)
+	    e2fsprogs are not in the usual place
+	    (namely chattr and lsattr in /usr/bin)
+0.05  
+	- 
+	  cleaned up POD (documentation),
+	  updated example to use a sensible bitmask
+	    (wasn't changed when switched to kernel mappings),
+	  Changed to Filesys::Ext2; it's FileHandle and FileCache but Filesys?!
